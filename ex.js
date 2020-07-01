@@ -6,8 +6,8 @@ const truck = {
 };
 
 const company = {
-  money: 10000,
-  truckAvailable: 10,
+  money: 100,
+  truckAvailable: 1,
   fuelPrice: 1
 };
 
@@ -28,10 +28,16 @@ const marketPlace = (offer) => {
     const travelCost =
       (offer.travel / truck.fuelComsuption) * company.fuelPrice;
 
+    if (company.money > 500) {
+      company.truckAvailable++;
+      company.money -= 500;
+    }
+
     if (
       offer.boxes <= truck.capacity &&
       travelCost < company.money &&
-      getGainFromOffer(offer) > travelCost
+      getGainFromOffer(offer) > travelCost &&
+      company.truckAvailable > 0
     ) {
       company.money -= travelCost;
       resolve(offer);
