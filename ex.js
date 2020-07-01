@@ -79,7 +79,7 @@ const acceptOffer = (offer) => {
   // Truck leave the parking from the company
   company.truckAvailable--;
 
-  // Compute the travel time
+  // Compute the travel time 2 time for the travel back
   const travelTime = offer.travel * secondPerTravelUnit * 1000 * 2;
 
   setTimeout(gainMoney, travelTime, offer);
